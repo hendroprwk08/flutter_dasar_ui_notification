@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dasar/firstpage.dart';
+import 'package:flutter_dasar/secondpage.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 void main() {
@@ -25,7 +27,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'), debugShowCheckedModeBanner: false,
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -95,8 +98,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.greenAccent),
-                            foregroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.greenAccent),
+                            foregroundColor:
+                                MaterialStateProperty.all<Color>(Colors.orange),
                           ),
                           onPressed: () {
                             Fluttertoast.showToast(
@@ -111,7 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: const Text('TOAST')),
                       ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.red),
                           ),
                           onPressed: () {
                             const snackBar = SnackBar(
@@ -124,29 +130,44 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: const Text('SNACK BAR')),
                       ElevatedButton(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors.blue),
                           ),
                           onPressed: () {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                    // return object of type Dialog
-                                    return AlertDialog(
-                                      title:  Text("Alert Dialog title"),
-                                      content:  Text("Alert Dialog body"),
-                                      actions: <Widget>[
-                                        // usually buttons at the bottom of the dialog
-                                        TextButton(
-                                            onPressed: (){
-                                                Navigator.of(context).pop();
-                                            },
-                                            child: Text("Close"))
-                                      ],
-                                    );
-                                  });
+                                  // return object of type Dialog
+                                  return AlertDialog(
+                                    title: Text("Alert Dialog title"),
+                                    content: Text("Alert Dialog body"),
+                                    actions: <Widget>[
+                                      // usually buttons at the bottom of the dialog
+                                      TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text("Close"))
+                                    ],
+                                  );
+                                });
                           },
                           child: const Text('DIALOG')),
-
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => firstpage())
+                            );
+                          },
+                          child: Text("OPEN NEW PAGE")),
+                      ElevatedButton(onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => secondpage())
+                        );
+                      },
+                          child: Text("FORM PAGE"))
                     ]));
           },
         ) // This trailing comma makes auto-formatting nicer for build methods.

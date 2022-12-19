@@ -21,15 +21,30 @@ class firstpage extends StatelessWidget {
       ),
       body: Builder(
         builder: (BuildContext context) {
-          return SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width, //fit to parent
-                  child: Text("1st PAGE")
+          return Container(
+            alignment: Alignment.center,
+            color: Colors.lightBlue,
+            margin: EdgeInsets.all(50.0),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("1st PAGE", style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
-                ),
-              );
+                  ),
+
+                  ElevatedButton(
+                    child: new Text('CLOSE THIS PAGE'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ]
+
+            ),
+          );
         },
       ),
     );
